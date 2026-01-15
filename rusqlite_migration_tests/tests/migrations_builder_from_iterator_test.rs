@@ -15,8 +15,8 @@
 
 use std::{iter::FromIterator, num::NonZeroUsize};
 
-use rusqlite::{params, Connection, Transaction};
-use rusqlite_migration::{Migrations, MigrationsBuilder, SchemaVersion, M};
+use rusqlite::{Connection, Transaction, params};
+use rusqlite_migration::{M, Migrations, MigrationsBuilder, SchemaVersion};
 
 #[test]
 fn main_test() {

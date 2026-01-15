@@ -15,7 +15,7 @@
 
 use std::{convert::TryFrom, num::NonZeroUsize};
 
-use crate::{Error, Result, M};
+use crate::{Error, M, Result};
 use include_dir::Dir;
 
 #[derive(Debug, Clone)]

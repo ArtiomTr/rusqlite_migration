@@ -17,7 +17,7 @@ use std::{iter::FromIterator, mem::take};
 
 use include_dir::Dir;
 
-use crate::{loader::from_directory, MigrationHook, Result, M};
+use crate::{M, MigrationHook, Result, loader::from_directory};
 
 /// Allows to build a `Vec<M<'u>>` with additional edits.
 #[derive(Default, Debug)]

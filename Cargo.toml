@@ -1,15 +1,3 @@
-[workspace.package]
-authors = ["Clément Joly <foss@131719.xyz>"]
-categories = ["database"]
-description = "Simple schema migration library for rusqlite using user_version instead of an SQL table to maintain the current schema version."
-homepage = "https://cj.rs/rusqlite_migration"
-keywords = ["rusqlite", "sqlite", "user_version", "database", "migration"]
-license = "Apache-2.0"
-repository = "https://github.com/cljoly/rusqlite_migration"
-documentation = "https://docs.rs/rusqlite_migration/"
-rust-version = "1.84"
-version = "2.3.0"
-
 [workspace]
 members = [
   "rusqlite_migration",
@@ -17,8 +5,25 @@ members = [
   "rusqlite_migration_benches",
   "examples/*",
 ]
-# https://doc.rust-lang.org/cargo/reference/resolver.html#feature-resolver-version-2
-resolver = "2"
+resolver = "3"
+
+[workspace.package]
+authors = [
+  "Clément Joly <foss@131719.xyz>",
+  "Artiom Tretjakovas <hi@sirse.dev>"
+]
+categories = ["database"]
+description = "Simple schema migration library for rusqlite using user_version instead of an SQL table to maintain the current schema version."
+homepage = "https://cj.rs/rusqlite_migration"
+keywords = ["rusqlite", "sqlite", "user_version", "database", "migration"]
+license = "Apache-2.0"
+repository = "https://github.com/cljoly/rusqlite_migration"
+documentation = "https://docs.rs/rusqlite_migration/"
+version = "2.3.0"
+edition = "2024"
+
+[workspace.dependencies]
+rusqlite_migration = { path = "./rusqlite_migration" }
 
 [workspace.lints.rust]
 unsafe_code = "forbid"

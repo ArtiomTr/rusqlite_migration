@@ -15,8 +15,8 @@
 
 use std::num::NonZeroUsize;
 
-use rusqlite::{params, Connection};
-use rusqlite_migration::{MigrationDefinitionError, Migrations, SchemaVersion, M};
+use rusqlite::{Connection, params};
+use rusqlite_migration::{M, MigrationDefinitionError, Migrations, SchemaVersion};
 
 #[test]
 fn main_test() {
@@ -114,9 +114,10 @@ fn main_test() {
         migrations.to_version(&mut conn, 3).unwrap();
 
         // the table is gone now
-        assert!(conn
-            .execute("INSERT INTO habitats (name) VALUES (?1)", params!["Beach"],)
-            .is_err());
+        assert!(
+            conn.execute("INSERT INTO habitats (name) VALUES (?1)", params!["Beach"],)
+                .is_err()
+        );
 
         conn.execute("INSERT INTO food (name) VALUES (?1)", params!["Cheese"])
             .unwrap();

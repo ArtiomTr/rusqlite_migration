@@ -1,16 +1,15 @@
 [package]
-edition = "2021"
 name = "rusqlite_migration"
 readme = "README.md"
 
 authors.workspace = true
 categories.workspace = true
 description.workspace = true
+edition.workspace = true
 homepage.workspace = true
 keywords.workspace = true
 license.workspace = true
 repository.workspace = true
-rust-version.workspace = true
 version.workspace = true
 
 # Locally, run:
@@ -32,18 +31,11 @@ from-directory = ["dep:include_dir"]
 [dependencies]
 include_dir = { version = "0.7.4", optional = true }
 log = "0.4"
-
-[dependencies.rusqlite]
-version = "0.37.0"
-default-features = false
-features = []
+rusqlite = { version = "0.38", features = ["cache"] }
 
 [dev-dependencies]
 anyhow = "1"
 insta = "1.45.0"
 mutants = "0.0.3"
-
-[dev-dependencies.env_logger]
-version = "0.11"
-default-features = false
+env_logger = { version = "0.11", default-features = false }
 

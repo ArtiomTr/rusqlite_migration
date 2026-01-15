@@ -110,11 +110,14 @@ impl fmt::Display for Error {
                         parent,
                         fkid,
                     } = row;
-                    writeln!(f, "  - row with rowid {rowid} in table '{table}' references non-existing row table '{parent}', using foreign key value {fkid}")?
+                    writeln!(
+                        f,
+                        "  - row with rowid {rowid} in table '{table}' references non-existing row table '{parent}', using foreign key value {fkid}"
+                    )?
                 }
                 Ok(())
             }
-            Error::Unrecognized(ref e) => write!(
+            Error::Unrecognized(e) => write!(
                 f,
                 "rusqlite_migration unknown error (the library might be out of date): {e}"
             ),
@@ -137,7 +140,7 @@ impl std::error::Error for Error {
             Error::SpecifiedSchemaVersion(e) => Some(e),
             Error::MigrationDefinition(e) => Some(e),
             Error::ForeignKeyCheck(vec) => Some(vec.first()?),
-            Error::Unrecognized(ref e) => Some(&**e),
+            Error::Unrecognized(e) => Some(&**e),
             Error::Hook(_) | Error::FileLoad(_) | Error::InvalidUserVersion => None,
         }
     }
@@ -172,7 +175,10 @@ impl fmt::Display for SchemaVersionError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             SchemaVersionError::TargetVersionOutOfRange { specified, highest } => {
-                write!(f, "Attempt to migrate to version {specified}, which is higher than the highest version currently supported, {highest}.")
+                write!(
+                    f,
+                    "Attempt to migrate to version {specified}, which is higher than the highest version currently supported, {highest}."
+                )
             }
             SchemaVersionError::TooHigh => {
                 write!(f, "Attempt to use a schema version higher than supported.")

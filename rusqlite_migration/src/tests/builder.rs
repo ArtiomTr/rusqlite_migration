@@ -17,7 +17,7 @@ use std::{iter::FromIterator, num::NonZeroUsize};
 
 use rusqlite::Connection;
 
-use crate::{Migrations, MigrationsBuilder, SchemaVersion, M};
+use crate::{M, Migrations, MigrationsBuilder, SchemaVersion};
 
 #[test]
 #[should_panic]
@@ -39,10 +39,12 @@ fn test_0_index() {
 fn test_valid_index() {
     let ms = vec![M::up("CREATE TABLE t1(a);"), M::up("CREATE TABLE t2(a);")];
 
-    insta::assert_debug_snapshot!(MigrationsBuilder::from_iter(ms)
-        .edit(1, move |m| m.down("DROP TABLE t1;"))
-        .edit(2, move |m| m.down("DROP TABLE t2;"))
-        .finalize());
+    insta::assert_debug_snapshot!(
+        MigrationsBuilder::from_iter(ms)
+            .edit(1, move |m| m.down("DROP TABLE t1;"))
+            .edit(2, move |m| m.down("DROP TABLE t2;"))
+            .finalize()
+    );
 }
 
 #[test]

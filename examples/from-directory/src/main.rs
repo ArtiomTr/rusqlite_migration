@@ -16,8 +16,8 @@
 use std::sync::LazyLock;
 
 use anyhow::Result;
-use include_dir::{include_dir, Dir};
-use rusqlite::{params, Connection};
+use include_dir::{Dir, include_dir};
+use rusqlite::{Connection, params};
 use rusqlite_migration::Migrations;
 
 static MIGRATIONS_DIR: Dir = include_dir!("$CARGO_MANIFEST_DIR/migrations");

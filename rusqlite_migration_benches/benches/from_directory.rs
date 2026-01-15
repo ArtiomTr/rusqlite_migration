@@ -13,8 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use criterion::{criterion_group, Criterion};
-use include_dir::{include_dir, Dir};
+use criterion::{Criterion, criterion_group};
+use include_dir::{Dir, include_dir};
 
 use rusqlite_migration::Migrations;
 

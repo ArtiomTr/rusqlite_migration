@@ -20,7 +20,7 @@ use std::iter::FromIterator;
 
 use iai::black_box;
 use rusqlite::Connection;
-use rusqlite_migration::{Migrations, M};
+use rusqlite_migration::{M, Migrations};
 
 fn upward(i: u64) {
     let sql_migrations = (0..=i)

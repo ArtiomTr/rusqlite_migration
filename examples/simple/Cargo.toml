@@ -1,19 +1,14 @@
 [package]
 name = "example-simple"
 version = "0.1.0"
-edition = "2018"
 publish = false
+
+edition.workspace = true
 
 [dependencies]
 rusqlite_migration = { path = "../../rusqlite_migration" }
 log = "0.4"
 anyhow = "1"
 mktemp = "0.5"
-
-[dependencies.rusqlite]
-version = "0.37.0"
-features = ["extra_check"] # A realistic use case
-
-[dependencies.env_logger]
-version = "0.11"
-default-features = false
+rusqlite = { version = "0.38", features = ["extra_check"] } # A realistic use case
+env_logger = { version = "0.11", default-features = false }

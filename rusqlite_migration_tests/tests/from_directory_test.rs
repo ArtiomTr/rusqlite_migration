@@ -15,9 +15,9 @@
 
 use std::num::NonZeroUsize;
 
-use include_dir::{include_dir, Dir};
+use include_dir::{Dir, include_dir};
 
-use rusqlite::{params, Connection};
+use rusqlite::{Connection, params};
 use rusqlite_migration::{Error, Migrations, SchemaVersion};
 
 static MIGRATIONS_DIR: Dir =

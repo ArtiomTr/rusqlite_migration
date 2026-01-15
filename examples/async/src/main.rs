@@ -15,7 +15,7 @@
 
 use anyhow::Result;
 use rusqlite::params;
-use rusqlite_migration::{Migrations, M};
+use rusqlite_migration::{M, Migrations};
 use tokio_rusqlite_new::Connection;
 
 /// The general idea with this example is to use [`Connection::call`][call] and

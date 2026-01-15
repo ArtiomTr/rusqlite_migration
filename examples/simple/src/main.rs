@@ -14,8 +14,8 @@
 // limitations under the License.
 
 use anyhow::Result;
-use rusqlite::{params, Connection};
-use rusqlite_migration::{Migrations, M};
+use rusqlite::{Connection, params};
+use rusqlite_migration::{M, Migrations};
 
 // Test that migrations are working
 #[cfg(test)]

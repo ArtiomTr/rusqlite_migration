@@ -17,14 +17,14 @@ use std::{iter::FromIterator, num::NonZeroUsize};
 
 use rusqlite::{Connection, OpenFlags, Transaction};
 
-use crate::tests::helpers::{all_valid_down, m_valid0_down, m_valid_fk_down};
+use crate::tests::helpers::{all_valid_down, m_valid_fk_down, m_valid0_down};
 use crate::{
+    Error, M, MigrationDefinitionError, Migrations, SchemaVersion, SchemaVersionError,
     tests::helpers::{
-        all_valid_up, m_invalid_fk, m_invalid_fk_down, m_valid0_up, m_valid10_up, m_valid11_up,
-        m_valid_fk_up,
+        all_valid_up, m_invalid_fk, m_invalid_fk_down, m_valid_fk_up, m_valid0_up, m_valid10_up,
+        m_valid11_up,
     },
-    user_version, Error, MigrationDefinitionError, Migrations, SchemaVersion, SchemaVersionError,
-    M,
+    user_version,
 };
 
 use super::helpers::{m_invalid0, m_invalid1, m_valid20_up, m_valid21_up, raw_set_user_version};

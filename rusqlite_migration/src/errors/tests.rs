@@ -202,7 +202,10 @@ fn test_schema_version_error_display() {
         specified: SchemaVersion::NoneSet,
         highest: SchemaVersion::NoneSet,
     };
-    assert_eq!("Attempt to migrate to version 0 (no version set), which is higher than the highest version currently supported, 0 (no version set).", format!("{err}"))
+    assert_eq!(
+        "Attempt to migrate to version 0 (no version set), which is higher than the highest version currently supported, 0 (no version set).",
+        format!("{err}")
+    )
 }
 
 #[test]
@@ -213,7 +216,10 @@ fn test_foreign_key_check_error_display() {
         parent: "b".to_string(),
         fkid: 2,
     };
-    assert_eq!("Foreign key check found row with id 1 in table 'a' missing from table 'b' but required by foreign key with id 2", format!("{err}"))
+    assert_eq!(
+        "Foreign key check found row with id 1 in table 'a' missing from table 'b' but required by foreign key with id 2",
+        format!("{err}")
+    )
 }
 
 #[test]
